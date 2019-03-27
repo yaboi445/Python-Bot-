@@ -22,7 +22,7 @@ async def on_message(message):
             file.write(json.dumps(json_file))
 
     elif user_input.startswith("?r count"):
-        reply = ('Current number of parallel temporal realities is: `' + json_file.get(date_time, 0) + '`').format(message)
+        reply = ('Current number of parallel temporal realities is: `' + str(sum(list(json_file.values()))) + '`').format(message)
         await client.send_message(message.channel, reply)
 
     elif user_input.startswith("?r date"):
