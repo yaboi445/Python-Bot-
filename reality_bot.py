@@ -6,8 +6,8 @@ client = discord.Client()
 @client.event
 async def on_message(message):
     user_input = message.content
-    # we do not want the bot to reply to itself
-    if message.author == client.user:
+    # we do not want the bot to reply to itself or non-commands
+    if (message.author == client.user) or (not user_input.startswith('?r')):
         return
     with open('counter.json', 'r') as file:
         json_file = json.loads(file)
